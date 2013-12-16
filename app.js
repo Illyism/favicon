@@ -45,19 +45,14 @@ if (cluster.isMaster) {
   app.post('/process', function (req, res) {
     for (var i = req.files.files.length - 1; i >= 0; i--) {
       var file = req.files.files[i];
-      console.log(file);
       var _name = file.path;
       var name = _name.substr((__dirname+"/tmp/images/").length);
       var pathname = _name.substr((__dirname+"/tmp/images/").length, name.length-4);
       // Making directory
-      console.log(name, pathname);
-      console.log("making directory");
       fs.mkdir(__dirname+"/tmp/processing/"+pathname, function() {
-        console.log("made directory");
         // Moving files
         var fileName = __dirname+"/tmp/processing/"+pathname+"/"+name;
         fs.rename(__dirname+"/tmp/images/"+name, fileName, function() {
-          console.log("starting");
           var sh = cp.spawn("sh", [__dirname+"/webicon.sh", fileName, __dirname+"/tmp/processing/"+pathname]);
           sh.stdout.on('data', function (data) {
             console.log('stdout: ' + data);
