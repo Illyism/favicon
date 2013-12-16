@@ -1,13 +1,9 @@
 
 $(function () {
-	var pInst;
-	new ProgressButton(document.getElementById("uploadbtn"), {
-		callback : function( instance ) {
-			pInst = instance;
-		}
-	} );
+    var pBTN = new ProgressButton(document.getElementById("uploadbtn"));
+
 	$("#fileupload").click(function() {
-		$("#uploadbtn").click();
+		$("#uploadbtn").trigger("click");
 	})
     $('#fileupload').fileupload({
         dataType: 'json',
@@ -15,11 +11,10 @@ $(function () {
         	var result = data.result;
             var zip = result.zip;
             location.href = zip;
-            pInst._stop(1);
+            pBTN._stop(1);
         },
         progress: function (e, data) {
-            $("#uploadbtn").click();
-            pInst._setProgress( parseInt(data.loaded / data.total) );
+            pBTN._setProgress( parseInt(data.loaded / data.total) );
         }
     });
 });
