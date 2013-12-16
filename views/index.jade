@@ -1,11 +1,10 @@
 extends layout
 block content
 	.container
-		.ui.basic.segment
-			h1.ui.header.center Upload an icon
-			input(id="fileupload", type="file", name="files[]", data-url="process").ui.button.black.icon.massive.fluid.file
-			.ui.blue.progress.bottom.attached
-				.bar(style="width:0%;")
+		.uploader
+			button#uploadbtn(class="progress-button", data-style="fill", data-horizontal).add-photo-btn
+				| Upload Image
+			input(type="file", id="fileupload", name="files[]",  data-url="process")
 block footer
 block scripts
 	script(type="text/javascript", src="/js/upload.js")

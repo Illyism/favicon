@@ -8,13 +8,13 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,100italic,300italic,400italic,500italic,500,700italic,700,900,900italic);
 // Roboto 100 300 400 500 700 900
 @import "semantic.min.css";
+@import "progress";
 
 *, *::before, *::after {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-
 body {
 	font-family: "Roboto", Helvetica, Futura, Arial, sans-serif;
 	background: #eee;
@@ -31,6 +31,42 @@ a {
 		color: darken(@color, 10%);
 	}
 }
+.uploader input[type="file"]{
+    z-index: 999;
+    line-height: 0;
+    font-size: 50px;
+    position: absolute;
+    opacity: 0;
+    filter: ~"alpha(opacity = 0)";
+    -ms-filter: "alpha(opacity=0)";
+    cursor: pointer;
+    _cursor: hand;
+    margin: 0;
+    padding:0;
+
+    left: 0px;
+    top: 0px;
+    height: 210px;
+    width: 500px;
+    cursor: pointer;
+}
+
+.add-photo-btn{
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    text-align:center;
+    display:block;
+    width: 500px;
+    height: 200px;
+    font-size: 18px;
+    line-height: 30px;
+    float: left;
+    cursor: pointer;
+}
+input[type="text"]{
+	float: left;
+}
 
 .container {
 	position: absolute;
@@ -40,7 +76,7 @@ a {
 	bottom: 0px;
 	right: 0px;
 	width: 600px;
-	height: 150px;
+	height: 200px;
 
 	.ui.segment {
 		border: 1px dashed #000;
