@@ -4,6 +4,8 @@ block content
 		.ui.basic.segment
 			h1.ui.header.center Upload an icon
 			input(id="fileupload", type="file", name="files[]", data-url="process").ui.button.black.icon.massive.fluid.file
+			.ui.blue.progress.bottom.attached
+				.bar(style="width:0%;")
 block footer
 block scripts
 	script(type="text/javascript", src="/js/upload.js")

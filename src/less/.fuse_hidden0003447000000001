@@ -37,12 +37,9 @@ a {
 	top: 0px;
 	left: 0px;
 	margin: auto;
-	bottom: 0px;
-	right: 0px;
-	width: 600px;
-	height: 150px;
 
 	.ui.segment {
+		width: 100%;
 		border: 1px dashed #000;
 		min-height: 40%;
 		.dropzone {
