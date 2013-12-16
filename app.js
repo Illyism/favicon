@@ -22,12 +22,15 @@ if (cluster.isMaster) {
 } else {
   
   app.use(express.compress());
-  app.use(express.logger("dev"));
   app.use(express.bodyParser({ keepExtensions: true, uploadDir: 'tmp/images' }));
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.static(__dirname + '/app'));
 
+  app.get('/', function (req, res) {
+  	res.render("index");
+  });
+  app.use(express.logger("dev"));
   //app.use("/zip", express.static(__dirname + '/tmp/zip'));
   app.get("/zip/:zip", function(req, res) {
     var zip = req.params.zip;
@@ -38,9 +41,6 @@ if (cluster.isMaster) {
     });
   })
 
-  app.get('/', function (req, res) {
-  	res.render("index");
-  });
 
   app.post('/process', function (req, res) {
     for (var i = req.files.files.length - 1; i >= 0; i--) {
