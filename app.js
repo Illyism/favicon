@@ -48,6 +48,7 @@ if (cluster.isMaster) {
       var _name = file.path;
       var name = _name.substr(11)
       var pathname = _name.substr(11, name.length-4);
+      console.log(pathname, name);
       // Making directory
       console.log("making directory");
       fs.mkdir(__dirname+"/tmp/processing/"+pathname, function() {
