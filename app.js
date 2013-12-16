@@ -47,8 +47,8 @@ if (cluster.isMaster) {
       var file = req.files.files[i];
       console.log(file);
       var _name = file.path;
-      var name = _name.substr((__dirname+"tmp/images/").length);
-      var pathname = _name.substr((__dirname+"tmp/images/").length, name.length-4);
+      var name = _name.substr((__dirname+"/tmp/images/").length);
+      var pathname = _name.substr((__dirname+"/tmp/images/").length, name.length-4);
       // Making directory
       console.log("making directory");
       fs.mkdir(__dirname+"/tmp/processing/"+pathname, function() {
