@@ -1,4 +1,16 @@
 /* General styles for all types of buttons */
+
+@font-face {
+  font-family: 'Icons';
+  src: url(../fonts/icons.eot);
+  src: url(../fonts/icons.eot?#iefix) format('embedded-opentype'), url(../fonts/icons.svg#icons) format('svg'), url(../fonts/icons.woff) format('woff'), url(../fonts/icons.ttf) format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-decoration: inherit;
+  text-transform: none;
+}
+
 .progress-button {
 	position: relative;
 	display: inline-block;
@@ -36,8 +48,9 @@
 .progress-button .content::before,
 .progress-button .content::after  {
 	position: absolute;
+	margin: 10px 0;
 	right: 20px;
-	color: #000;
+	color: #fff;
 	font-family: "Icons";
 	opacity: 0;
 	-webkit-transition: opacity 0.3s 0.3s;
@@ -70,15 +83,7 @@
 	position: absolute;
 	left: 0;
 	
-	background: #ffff88; /* Old browsers */
-	background: -moz-linear-gradient(top,  #ffff88 0%, #ffff88 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffff88), color-stop(100%,#ffff88)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #ffff88 0%,#ffff88 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #ffff88 0%,#ffff88 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #ffff88 0%,#ffff88 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #ffff88 0%,#ffff88 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', endColorstr='#ffff88',GradientType=0 ); /* IE6-9 */
-
+	background: darken(#febf01, 10%);
 }
 
 .progress-button[data-horizontal] .progress-inner {

@@ -7,7 +7,6 @@
 
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,100italic,300italic,400italic,500italic,500,700italic,700,900,900italic);
 // Roboto 100 300 400 500 700 900
-@import "semantic.min.css";
 @import "progress";
 
 *, *::before, *::after {
@@ -17,7 +16,8 @@
 }
 body {
 	font-family: "Roboto", Helvetica, Futura, Arial, sans-serif;
-	background: #eee;
+	background: #252025;
+	color: #fff;
 	margin: 0px;
 }
 
@@ -45,10 +45,25 @@ a {
     padding:0;
 
     left: 0px;
-    top: 0px;
+    top: 95px;
     height: 210px;
     width: 500px;
     cursor: pointer;
+}
+
+
+@keyframes pulse
+{
+	0%   {box-shadow: #febf01 0px 0px 15px;}
+	50%  {box-shadow: #febf01 0px 0px 10px;}
+	100% {box-shadow: #febf01 0px 0px 15px;}
+}
+
+@-webkit-keyframes pulse
+{
+	0%   {box-shadow: #febf01 0px 0px 15px;}
+	50%  {box-shadow: #febf01 0px 0px 10px;}
+	100% {box-shadow: #febf01 0px 0px 15px;}
 }
 
 .add-photo-btn{
@@ -63,6 +78,12 @@ a {
     line-height: 30px;
     float: left;
     cursor: pointer;
+    box-shadow: #febf01 0px 0px 20px;
+
+	-webkit-animation:pulse 5s;
+	animation:pulse 5s;
+	-webkit-animation-iteration-count:infinite;
+	animation-iteration-count:infinite;
 }
 input[type="text"]{
 	float: left;
@@ -76,26 +97,52 @@ input[type="text"]{
 	bottom: 0px;
 	right: 0px;
 	width: 500px;
-	height: 200px;
+	height: 420px;
+	text-align: center;
+}
 
-	.ui.segment {
-		border: 1px dashed #000;
-		min-height: 40%;
-		.dropzone {
-			border: 1px dashed #000;
-			border-radius: 10px;
-			height: 100%;
-			margin: auto;
-			padding: 20px;
+h1.header {
+	border: 0;
+	margin: 0 0 1rem;
+	padding: 0;
+	font-size: 1.33em;
+	font-weight: 700;
+	line-height: 1.33;
+	color: #fff;
+
+	text-shadow: 0px -1px 1px rgba(0,0,0, 1);
+
+	text-transform: lowercase;
+	font-variant: small-caps;
+	font-weight: 100;
+	font-size: 4em;
+	text-align: center;
+}
+p.description {
+	padding: 1.5em 0;
+	font-weight: 300;
+	clear: both;
+	font-style: italic;
+	.author {
+		font-variant: small-caps;
+		text-transform: lowercase;
+		font-style: normal;
+		font-weight: 500;
+		color: #fff;
+		text-decoration: none;
+		&:hover {
+			color: #DDD;
 		}
 	}
 }
 
-h1.ui.header {
-	text-transform: uppercase;
-	font-weight: 100;
-	font-size: 3em;
-	&.center {
-		text-align: center;
-	}
+.progress-button .content {
+	font-weight: 900;
+	font-family: "Roboto", Helvetica, Arial;
+	text-transform: lowercase;
+	font-variant: small-caps;
+	font-size: 30px;
+	//color: rgb(37,32,37, 1);
+	color: #FFF;
+	text-shadow: 0px -1px 1px darken(rgba(37,32,37, 0.5), 70%);
 }

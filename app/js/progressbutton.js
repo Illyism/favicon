@@ -137,6 +137,8 @@
 			$(self.progress).removeClass("notransition");
 			$(this).addClass("state-loading");
 
+			self.progress.style.opacity = 1;
+
 			setTimeout( function() {
 				if( typeof self.options.callback === 'function' ) {
 					self.options.callback( self );

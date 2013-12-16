@@ -16,6 +16,7 @@ html
 			script(type="text/javascript", src="/js/jquery.widget.js")
 			script(type="text/javascript", src="/js/jquery.upload.js")
 			script(type="text/javascript", src="/js/modernizr.js")
+			script(type="text/javascript", src="/js/semantic.min.js")
 			script(type="text/javascript", src="/js/progressbutton.js")
 			block scripts
 
