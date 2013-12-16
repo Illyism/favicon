@@ -4,9 +4,9 @@ $(function () {
 
     $('#fileupload').fileupload({
         dataType: 'json',
-        start: function() {
+        submit: function() {
             $("#uploadbtn").trigger("click");
-        }
+        },
         done: function (e, data) {
         	var result = data.result;
             var zip = result.zip;
