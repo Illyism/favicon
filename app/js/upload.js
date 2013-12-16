@@ -14,8 +14,6 @@ $(function () {
             pBTN._stop(1);
         },
         progress: function (e, data) {
-            console.log(100 * (data.loaded / data.total) + '%');
-
             pBTN._setProgress( data.loaded / data.total );
         }
     });
