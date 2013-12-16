@@ -22,7 +22,7 @@ if (cluster.isMaster) {
 } else {
   
   app.use(express.compress());
-  app.use(express.bodyParser({ keepExtensions: true, uploadDir: 'tmp/images' }));
+  app.use(express.bodyParser({ keepExtensions: true, uploadDir: __dirname+'/tmp/images' }));
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.static(__dirname + '/app'));
