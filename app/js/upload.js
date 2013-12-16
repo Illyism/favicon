@@ -2,11 +2,11 @@
 $(function () {
     var pBTN = new ProgressButton(document.getElementById("uploadbtn"));
 
-	$("#fileupload").click(function() {
-		$("#uploadbtn").trigger("click");
-	})
     $('#fileupload').fileupload({
         dataType: 'json',
+        start: function() {
+            $("#uploadbtn").trigger("click");
+        }
         done: function (e, data) {
         	var result = data.result;
             var zip = result.zip;
