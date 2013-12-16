@@ -18,6 +18,7 @@ $(function () {
             pInst._stop(1);
         },
         progress: function (e, data) {
+            $("#uploadbtn").click();
             pInst._setProgress( parseInt(data.loaded / data.total) );
         }
     });
