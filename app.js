@@ -57,7 +57,7 @@ if (cluster.isMaster) {
         console.log(__dirname+"/"+file.path);
         fs.rename(__dirname+"/"+file.path, fileName, function() {
           console.log("starting");
-          var sh = cp.spawn("sh", ["webicon.sh", fileName, __dirname+"/tmp/processing/"+pathname]);
+          var sh = cp.spawn("sh", [__dirname+"/webicon.sh", fileName, __dirname+"/tmp/processing/"+pathname]);
           sh.stdout.on('data', function (data) {
             console.log('stdout: ' + data);
           });
