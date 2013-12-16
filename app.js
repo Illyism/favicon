@@ -12,6 +12,7 @@ app.use(express.bodyParser({ keepExtensions: true, uploadDir: __dirname+'/tmp/im
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.static(__dirname + '/app'));
+app.use(express.static(__dirname + '/app/img'));
 
 app.get('/', function (req, res) {
 	res.render("index");
