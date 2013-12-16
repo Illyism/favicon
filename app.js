@@ -65,4 +65,4 @@ app.post('/process', function (req, res) {
 });
 
 app.listen(4007);
-console.log(cluster.worker.id, "listening on 4007")
+console.log("listening on 4007")
