@@ -49,11 +49,14 @@ if (cluster.isMaster) {
       var name = _name.substr(11)
       var pathname = _name.substr(11, name.length-4);
       // Making directory
+      console.log("making directory");
       fs.mkdir(__dirname+"/tmp/processing/"+pathname, function() {
+        console.log("made directory");
         // Moving files
         var fileName = __dirname+"/tmp/processing/"+pathname+"/"+name;
         console.log(__dirname+"/"+file.path);
         fs.rename(__dirname+"/"+file.path, fileName, function() {
+          console.log("starting");
           var sh = cp.spawn("sh", ["webicon.sh", fileName, __dirname+"/tmp/processing/"+pathname]);
           sh.stdout.on('data', function (data) {
             console.log('stdout: ' + data);
