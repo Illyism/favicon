@@ -52,6 +52,7 @@ if (cluster.isMaster) {
       fs.mkdir(__dirname+"/tmp/processing/"+pathname, function() {
         // Moving files
         var fileName = __dirname+"/tmp/processing/"+pathname+"/"+name;
+        console.log(__dirname+"/"+file.path);
         fs.rename(__dirname+"/"+file.path, fileName, function() {
           var sh = cp.spawn("sh", ["webicon.sh", fileName, __dirname+"/tmp/processing/"+pathname]);
           sh.stdout.on('data', function (data) {
