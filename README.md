@@ -9,18 +9,14 @@ The server runs on Node.js. You also need NPM.
 
 You need ImageMagick installed. So this app only works on Linux or OS X.
 
-'''shell
-	sudo apt-get install imagemagick
-'''
+    sudo apt-get install imagemagick
 
 ## Installation
 
 Clone this repository and run **NPM install**. Then run the server using **node app**.
 
-'''shell
-	npm install
-	node app
-'''
+    npm install
+    node app
 
 ## Usage
 
