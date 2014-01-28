@@ -8,8 +8,8 @@
  * Copyright 2013, Codrops
  * http://www.codrops.com
  */
-;( function( window ) {
-	
+(function (window) {
+	/*global Modernizr:false */
 	'use strict';
 
 	// https://gist.github.com/edankwan/4389601
@@ -17,9 +17,11 @@
 		var prop = Modernizr.prefixed('transformStyle');
 		var val = 'preserve-3d';
 		var computedStyle;
-		if(!prop) return false;
+		if (!prop) {
+			return false;
+		}
 
-		prop = prop.replace(/([A-Z])/g, function(str,m1){ return '-' + m1.toLowerCase(); }).replace(/^ms-/,'-ms-');
+		prop = prop.replace(/([A-Z])/g, function (str, m1) {return '-' + m1.toLowerCase(); }).replace(/^ms-/, '-ms-');
 
 		Modernizr.testStyles('#modernizr{' + prop + ':' + val + ';}', function (el, rule) {
 			computedStyle = window.getComputedStyle ? getComputedStyle(el, null).getPropertyValue(prop) : '';
@@ -28,9 +30,9 @@
 		return (computedStyle === val);
 	});
 
-	function extend( a, b ) {
-		for( var key in b ) { 
-			if( b.hasOwnProperty( key ) ) {
+	function extend(a, b) {
+		for (var key in b) { 
+			if (b.hasOwnProperty(key)) {
 				a[key] = b[key];
 			}
 		}
@@ -47,13 +49,13 @@
 			'msTransition': 'MSTransitionEnd',
 			'transition': 'transitionend'
 		},
-		transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ];
+		transEndEventName = transEndEventNames[Modernizr.prefixed('transition')];
 
-	function ProgressButton( el, options ) {
+	function ProgressButton(el, options) {
 		this.button = el;
-		this.options = extend( {}, this.options );
-  		extend( this.options, options );
-  		this._init();
+		this.options = extend({}, this.options);
+		extend(this.options, options);
+		this._init();
 	}
 
 	ProgressButton.prototype.options = {
@@ -62,7 +64,7 @@
 		statusTime : 1500
 	};
 
-	ProgressButton.prototype._init = function() {
+	ProgressButton.prototype._init = function () {
 		this._validate();
 		// create structure
 		this._create();
@@ -70,89 +72,91 @@
 		this._initEvents();
 	};
 
-	ProgressButton.prototype._validate = function() {
+	ProgressButton.prototype._validate = function () {
 		// we will consider the fill/horizontal as default
-		if( this.button.getAttribute( 'data-style' ) === null ) {
-			this.button.setAttribute( 'data-style', 'fill' );
+		if (this.button.getAttribute('data-style') === null) {
+			this.button.setAttribute('data-style', 'fill');
 		}
-		if( this.button.getAttribute( 'data-vertical' ) === null && this.button.getAttribute( 'data-horizontal' ) === null ) {
-			this.button.setAttribute( 'data-horizontal', '' );
+		if (this.button.getAttribute('data-vertical') === null && this.button.getAttribute('data-horizontal') === null) {
+			this.button.setAttribute('data-horizontal', '');
 		}
-		if( !support.transforms3d && this.button.getAttribute( 'data-perspective' ) !== null ) {
-			this.button.removeAttribute( 'data-perspective' );
-			this.button.setAttribute( 'data-style', 'fill' );
-			this.button.removeAttribute( 'data-vertical' );
-			this.button.setAttribute( 'data-horizontal', '' );
+		if (!support.transforms3d && this.button.getAttribute('data-perspective') !== null) {
+			this.button.removeAttribute('data-perspective');
+			this.button.setAttribute('data-style', 'fill');
+			this.button.removeAttribute('data-vertical');
+			this.button.setAttribute('data-horizontal', '');
 		}
 	};
 
-	ProgressButton.prototype._create = function() {
-		var textEl = document.createElement( 'span' );
+	ProgressButton.prototype._create = function () {
+		var textEl = document.createElement('span');
 		textEl.className = 'content';
 		textEl.innerHTML = this.button.innerHTML;
-		var progressEl = document.createElement( 'span' );
+		var progressEl = document.createElement('span');
 		progressEl.className = 'progress';
 
-		var progressInnerEl = document.createElement( 'span' );
+		var progressInnerEl = document.createElement('span');
 		progressInnerEl.className = 'progress-inner';
-		progressEl.appendChild( progressInnerEl );
+		progressEl.appendChild(progressInnerEl);
 		// clear content
 		this.button.innerHTML = '';
 
-		if( this.button.getAttribute( 'data-perspective' ) !== null ) {
-			var progressWrapEl = document.createElement( 'span' );
+		if (this.button.getAttribute('data-perspective') !== null) {
+			var progressWrapEl = document.createElement('span');
 			progressWrapEl.className = 'progress-wrap';
-			progressWrapEl.appendChild( textEl );
-			progressWrapEl.appendChild( progressEl );
-			this.button.appendChild( progressWrapEl );
+			progressWrapEl.appendChild(textEl);
+			progressWrapEl.appendChild(progressEl);
+			this.button.appendChild(progressWrapEl);
 		}
 		else {
-			this.button.appendChild( textEl );
-			this.button.appendChild( progressEl );
+			this.button.appendChild(textEl);
+			this.button.appendChild(progressEl);
 		}
 		
 		// the element that serves as the progress bar
 		this.progress = progressInnerEl;
 
 		// property to change on the progress element
-		if( this.button.getAttribute( 'data-horizontal' ) !== null ) {
+		if (this.button.getAttribute('data-horizontal') !== null) {
 			this.progressProp = 'width';
 		}
-		else if( this.button.getAttribute( 'data-vertical' ) !== null ) {
+		else if (this.button.getAttribute('data-vertical') !== null) {
 			this.progressProp = 'height';
 		}
 		this._enable();
 	};
 
-	ProgressButton.prototype._setProgress = function( val ) {
-		this.progress.style[ this.progressProp ] = 100 * val + '%';
+	ProgressButton.prototype._setProgress = function (val) {
+		this.progress.style[this.progressProp] = 100 * val + '%';
 	};
 
-	ProgressButton.prototype._initEvents = function() {
+	ProgressButton.prototype._initEvents = function () {
 		var self = this;
-		this.button.addEventListener( 'click', function() {
+		this.button.addEventListener('click', function () {
 			// disable the button
-			self.button.setAttribute( 'disabled', '' );
+			self.button.setAttribute('disabled', '');
 			// add class state-loading to the button (applies a specific transform to the button depending which data-style is defined - defined in the stylesheets)
 			$(self.progress).removeClass("notransition");
 			$(this).addClass("state-loading");
 
 			self.progress.style.opacity = 1;
 
-			setTimeout( function() {
-				if( typeof self.options.callback === 'function' ) {
-					self.options.callback( self );
+			setTimeout(function () {
+				if (typeof self.options.callback === 'function') {
+					self.options.callback(self);
 				}
 				else {
-					self._setProgress( 1 );
-					var onEndTransFn = function( ev ) {
-						if( support.transitions && ev.propertyName !== self.progressProp ) return;
-						this.removeEventListener( transEndEventName, onEndTransFn );
+					self._setProgress(1);
+					var onEndTransFn = function (ev) {
+						if (support.transitions && ev.propertyName !== self.progressProp) {
+							return;
+						}
+						this.removeEventListener(transEndEventName, onEndTransFn);
 						self._stop();
 					};
 					
-					if( support.transitions ) {
-						self.progress.addEventListener( transEndEventName, onEndTransFn );
+					if (support.transitions) {
+						self.progress.addEventListener(transEndEventName, onEndTransFn);
 					}
 					else {
 						onEndTransFn.call();
@@ -160,28 +164,30 @@
 					
 				}
 			}, 
-			self.button.getAttribute( 'data-style' ) === 'fill' || 
-			self.button.getAttribute( 'data-style' ) === 'top-line' ||
-			self.button.getAttribute( 'data-style' ) === 'lateral-lines' ? 0 : 200 ); // TODO: change timeout to transitionend event callback
-		} );
+			self.button.getAttribute('data-style') === 'fill' || 
+			self.button.getAttribute('data-style') === 'top-line' ||
+			self.button.getAttribute('data-style') === 'lateral-lines' ? 0 : 200);
+		});
 	};
 
-	ProgressButton.prototype._stop = function( status ) {
+	ProgressButton.prototype._stop = function (status) {
 		var self = this;
 
-		setTimeout( function() {
+		setTimeout(function () {
 			// fade out progress bar
 			self.progress.style.opacity = 0;
-			var onEndTransFn = function( ev ) {
-				if( support.transitions && ev.propertyName !== 'opacity' ) return;
-				this.removeEventListener( transEndEventName, onEndTransFn );
-				$( self.progress).addClass( 'notransition' );
-				self.progress.style[ self.progressProp ] = '0%';
+			var onEndTransFn = function (ev) {
+				if (support.transitions && ev.propertyName !== 'opacity') {
+					return;
+				}
+				this.removeEventListener(transEndEventName, onEndTransFn);
+				$(self.progress).addClass('notransition');
+				self.progress.style[self.progressProp] = '0%';
 				self.progress.style.opacity = 1;
 			};
 
-			if( support.transitions ) {
-				self.progress.addEventListener( transEndEventName, onEndTransFn );
+			if (support.transitions) {
+				self.progress.addEventListener(transEndEventName, onEndTransFn);
 			}
 			else {
 				onEndTransFn.call();
@@ -189,30 +195,30 @@
 			
 			
 			// add class state-success to the button
-			if( typeof status === 'number' ) {
+			if (typeof status === 'number') {
 				var statusClass = status >= 0 ? 'state-success' : 'state-error';
 				$(self.button).addClass(statusClass);
 				// after options.statusTime remove status
-				setTimeout( function() {
-					$( self.button).removeClass(statusClass);
+				setTimeout(function () {
+					$(self.button).removeClass(statusClass);
 					self._enable();
-				}, self.options.statusTime );
+				}, self.options.statusTime);
 			}
 			else {
 				self._enable();
 			}
 
 			// remove class state-loading from the button
-			$( self.button).removeClass( 'state-loading' );
-		}, 100 );
+			$(self.button).removeClass('state-loading');
+		}, 100);
 	};
 
 	// enable button
-	ProgressButton.prototype._enable = function() {
-		this.button.removeAttribute( 'disabled' );
-	}
+	ProgressButton.prototype._enable = function () {
+		this.button.removeAttribute('disabled');
+	};
 
 	// add to global namespace
 	window.ProgressButton = ProgressButton;
 
-})( window );
+})(window);

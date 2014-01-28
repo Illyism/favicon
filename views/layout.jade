@@ -9,7 +9,7 @@ mixin metablocks(url, title, description)
 	meta(itemprop='description', content=description)
 	meta(name="description", content=description)
 	meta(name="keywords", content="favicon, icon, touch icon, icons")
-!!!
+doctype html
 html
 	head(lang="en")
 		title Favicon Maker
@@ -22,11 +22,11 @@ html
 		block content
 		footer
 			block footer
-			script(type="text/javascript", src="/js/jquery.js")
-			script(type="text/javascript", src="/js/jquery.easing.js")
-			script(type="text/javascript", src="/js/jquery.widget.js")
-			script(type="text/javascript", src="/js/jquery.upload.js")
-			script(type="text/javascript", src="/js/modernizr.js")
+			script(type="text/javascript", src="/js/lib/jquery.js")
+			script(type="text/javascript", src="/js/lib/jquery.easing.js")
+			script(type="text/javascript", src="/js/lib/jquery.widget.js")
+			script(type="text/javascript", src="/js/lib/jquery.upload.js")
+			script(type="text/javascript", src="/js/lib/modernizr.js")
 			script(type="text/javascript", src="/js/progressbutton.js")
 			block scripts
 			script.
