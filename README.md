@@ -7,9 +7,19 @@ Favicon Generator using Node.js and Imagemagick
 
 The server runs on Node.js. You also need NPM.
 
-You need ImageMagick installed. So this app only works on Linux or OS X.
+You need ImageMagick installed. So this app works anywhere.
+
+APT:
 
     sudo apt-get install imagemagick
+    
+[Homebrew](http://brewformulas.org/Imagemagick):
+
+    brew install imagemagick
+    
+[Chocolatey](http://chocolatey.org/packages?q=imagemagick):
+
+    choco install imagemagick
 
 ## Installation
 
