@@ -1,7 +1,11 @@
-favicon
-=======
+<h1 align="center">
+  <br>
+  <img width="450" src="https://cloud.githubusercontent.com/assets/304283/8266610/51c952f4-1727-11e5-907b-e6ff3faf87a5.png" alt="favicon generator">
+  <br>
+  <br>
+</h1>
 
-Favicon Generator using Node.js and Imagemagick
+> Icons for the web
 
 ## Requirements
 
@@ -34,7 +38,7 @@ The processing happens in the **/tmp/** directory. Images are uploaded to **/tmp
 
 # License
 
-Copyright © 2014 Ilias Ismanalijev
+Copyright © 2014-2015 Ilias Ismanalijev
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as

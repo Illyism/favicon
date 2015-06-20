@@ -1,13 +1,13 @@
 {
   "name": "favicon",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "BSD-2-Clause",
+  "license": "GPLv3",
   "dependencies": {
     "jade": "~0.35.0",
     "express": "~3.4.7"
