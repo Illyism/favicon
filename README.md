@@ -11,19 +11,19 @@
 
 The server runs on Node.js. You also need NPM.
 
-You need ImageMagick installed. So this app works anywhere.
+You need ImageMagick and zip installed. So this app works anywhere.
 
 APT:
 
-    sudo apt-get install imagemagick
+    sudo apt-get install imagemagick zip
     
 [Homebrew](http://brewformulas.org/Imagemagick):
 
-    brew install imagemagick
+    brew install imagemagick zip
     
 [Chocolatey](http://chocolatey.org/packages?q=imagemagick):
 
-    choco install imagemagick
+    choco install imagemagick zip
 
 ## Installation
 
