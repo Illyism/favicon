@@ -84,4 +84,4 @@ $CONVERT_CMD $PWD/$IMAGE_NAME-16.png $PWD/$IMAGE_NAME-32.png $PWD/$IMAGE_NAME-48
 
 # ZIP IT
 zip -9 -D -m -j $PWD/favicon.zip $PWD/favicon*.png $PWD/favicon*.ico
-zip -9 -D -j $PWD/favicon.zip $PWD/../../../views/favicon.html $PWD/../../../views/favicon.jade
+zip -9 -D -j $PWD/favicon.zip $PWD/../../../views/favicon.html $PWD/../../../views/favicon.pug
